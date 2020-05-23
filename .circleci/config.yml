@@ -1,4 +1,7 @@
 version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.8
+  cypress: cypress-io/cypress@1
 jobs:
   build:
     docker:
@@ -14,6 +17,8 @@ steps:
       - v1-dependencies-
 
   - run: yarn install
+
+  - run: yarn ci:cypress-run
 
   - save_cache:
     paths:
